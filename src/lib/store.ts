@@ -8,10 +8,10 @@ export interface BearSighting {
     city: string;
     address: string;
     species: string;
-    count: number;
+    count: string | number;  // ← 放寬
     description: string;
-    lat: number;
-    lng: number;
+    lat: string | number;  // ← 放寬
+    lng: string | number;  // ← 放寬
 }
 
 interface BearStore {

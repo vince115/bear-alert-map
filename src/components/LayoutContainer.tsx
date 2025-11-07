@@ -17,9 +17,17 @@ export default function LayoutContainer() {
     const { filteredSightings, setSightings } = useBearStore();
 
     useEffect(() => {
-        setSightings(data);
+        // 將字串數值欄位轉成 number
+        const normalized = data.map((s) => ({
+            ...s,
+            id: Number(s.id),
+            count: Number(s.count),
+            lat: Number(s.lat),
+            lng: Number(s.lng),
+        }));
+        setSightings(normalized);
     }, [setSightings]);
-
+    
     return (
         <div className="flex flex-col md:flex-row min-h-screen bg-gray-100 dark:bg-zinc-900/50">
             {/* 🔹 左側篩選欄（寬螢幕時） */}

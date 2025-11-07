@@ -2,7 +2,7 @@
 import { create } from "zustand";
 
 export interface BearSighting {
-    id: number;
+    id: string | number;  // ← 放寬
     datetime: string;
     info_type: string;
     city: string;

@@ -5,8 +5,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import { useMemo } from "react";
-import type { Cluster } from "leaflet";
+import { useMemo } from "react";  
 
 export default function MapViewClient({ data }: { data: any[] }) {
     const defaultCenter: [number, number] = [39.72, 140.1];

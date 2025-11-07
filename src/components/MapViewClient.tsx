@@ -6,6 +6,7 @@ import MarkerClusterGroup from "react-leaflet-cluster";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { useMemo } from "react";
+import type { Cluster } from "leaflet";
 
 export default function MapViewClient({ data }: { data: any[] }) {
     const defaultCenter: [number, number] = [39.72, 140.1];
@@ -64,24 +65,24 @@ export default function MapViewClient({ data }: { data: any[] }) {
                 chunkedLoading
                 showCoverageOnHover={false}
                 spiderfyOnEveryZoom={false}
-                iconCreateFunction={(cluster) => {
+                iconCreateFunction={(cluster: Cluster) => {
                     const count = cluster.getChildCount();
                     const size = count < 10 ? 40 : count < 100 ? 50 : 60;
                     return L.divIcon({
                         html: `<div style="
-                background: rgba(255,0,0,0.8);
-                color: white;
-                border-radius: 50%;
-                width: ${size}px;
-                height: ${size}px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-weight: bold;
-                font-size: 14px;
-                border: 2px solid white;
-                box-shadow: 0 0 5px rgba(0,0,0,0.3);
-              ">${count}</div>`,
+                        background: rgba(255,0,0,0.8);
+                        color: white;
+                        border-radius: 50%;
+                        width: ${size}px;
+                        height: ${size}px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: bold;
+                        font-size: 14px;
+                        border: 2px solid white;
+                        box-shadow: 0 0 5px rgba(0,0,0,0.3);
+                        ">${count}</div>`,
                         className: "cluster-marker",
                         iconSize: [size, size],
                     });
@@ -92,7 +93,7 @@ export default function MapViewClient({ data }: { data: any[] }) {
                     const icon = getIconForSpecies(s.species);
                     const lat = s.lat + jitter();
                     const lng = s.lng + jitter();
-                    
+
                     return (
                         <Marker key={s.id} position={[lat, lng]} icon={icon}>
                             <Popup>

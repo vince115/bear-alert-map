@@ -65,7 +65,7 @@ export default function MapViewClient({ data }: { data: any[] }) {
                 chunkedLoading
                 showCoverageOnHover={false}
                 spiderfyOnEveryZoom={false}
-                iconCreateFunction={(cluster: Cluster) => {
+                iconCreateFunction={(cluster: any) => {
                     const count = cluster.getChildCount();
                     const size = count < 10 ? 40 : count < 100 ? 50 : 60;
                     return L.divIcon({
